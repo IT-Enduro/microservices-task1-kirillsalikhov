@@ -10,8 +10,9 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./postgres/:/docker-entrypoint-initdb.d/
-    ports:
-      - "5432:5432"
+# commented as don't need it now
+#    ports:
+#      - "5432:5432"
 
   tickets-service:
     build: ./tickets-service
@@ -27,7 +28,7 @@ services:
     image: films-service:latest
     container_name: films-service
     ports:
-      - "8070:8070"
+      - "8070:8080"
     depends_on:
       - postgres
 
@@ -36,7 +37,7 @@ services:
     image: cinema-service:latest
     container_name: cinema-service
     ports:
-      - "8060:8060"
+      - "8060:8080"
     depends_on:
       - postgres
 
