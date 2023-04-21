@@ -4,7 +4,7 @@
   "description": "Cinema service",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev-start": "nodemon app.js"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -12,5 +12,8 @@
   "license": "WTFPL",
   "dependencies": {
     "koa": "^2.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

@@ -1,0 +1,20 @@
+version: "3.7"
+
+x-base-service: &base_service
+  command: npm run dev-start
+
+services:
+  tickets-service:
+    <<: *base_service
+    volumes:
+      - ./tickets-service:/app
+
+  films-service:
+    <<: *base_service
+    volumes:
+      - ./films-service:/app
+
+  cinema-service:
+    <<: *base_service
+    volumes:
+      - ./cinema-service:/app
