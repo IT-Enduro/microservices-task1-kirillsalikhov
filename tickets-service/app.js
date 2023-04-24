@@ -4,7 +4,7 @@ const port = 8080;
 
 const app = new Koa()
     .use(async ctx => {
-        ctx.body = `Hello`;
+        ctx.body = 'Tickets service gateway';
     })
     .listen(port, () => {
         console.log(`Ready to receive requests on ${port}`);

@@ -1,10 +1,10 @@
 const Koa = require('koa');
 
-const port = 8080;
+const port = 8070;
 
 const app = new Koa()
     .use(async ctx => {
-        ctx.body = `Hello`;
+        ctx.body = 'Films service gateway';
     })
     .listen(port, () => {
         console.log(`Ready to receive requests on ${port}`);

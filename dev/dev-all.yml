@@ -2,6 +2,8 @@ version: "3.7"
 
 x-base-service: &base_service
   command: npm run dev-start
+  environment:
+    SHADOW_DATABASE_URL: "postgresql://program:test@postgres:5432/prisma_shadow?schema=public"
 
 services:
   tickets-service:
@@ -17,6 +19,6 @@ services:
   cinema-service:
     <<: *base_service
     environment:
-      DATABASE_URL: postgresql://program:test@postgres:5432/cinema?schema=public
+      DATABASE_URL: "postgresql://program:test@postgres:5432/cinema?schema=public"
     volumes:
       - ./cinema-service:/app

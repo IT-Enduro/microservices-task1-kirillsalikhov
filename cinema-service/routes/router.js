@@ -3,6 +3,8 @@ const cinemaController = require('./cinema');
 
 const router = new Router();
 
+router.get('/', async (ctx) => { ctx.body = 'Cinema service gateway' })
+
 router.get('/manage/health', require('./healtcheck'));
 
 const apiRouter = new Router({

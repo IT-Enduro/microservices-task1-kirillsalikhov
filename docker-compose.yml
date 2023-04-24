@@ -27,7 +27,7 @@ services:
     image: films-service:latest
     container_name: films-service
     ports:
-      - "8070:8080"
+      - "8070:8070"
     depends_on:
       - postgres
 
@@ -35,8 +35,10 @@ services:
     build: ./cinema-service
     image: cinema-service:latest
     container_name: cinema-service
+    environment:
+      DATABASE_URL: "postgresql://program:test@postgres:5432/cinema?schema=public"
     ports:
-      - "8060:8080"
+      - "8060:8060"
     depends_on:
       - postgres
 
