@@ -1,0 +1,14 @@
+{
+  "name": "shared-libs",
+  "version": "0.0.1",
+  "description": "Shared libs used inside services",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm i --prefix ./api-client/generated",
+    "generate-api-client": "npx openapi-generator-cli generate -i ../openapi.yml -g typescript-axios -c api-client/config.json -o api-client/generated"
+  },
+  "license": "WTFPL",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.6.0"
+  }
+}

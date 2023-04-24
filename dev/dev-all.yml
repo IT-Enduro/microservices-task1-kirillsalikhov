@@ -24,3 +24,4 @@ services:
       DATABASE_URL: "postgresql://program:test@postgres:5432/cinema?schema=public"
     volumes:
       - ./cinema-service:/app
+      - ./shared-libs:/shared-libs
