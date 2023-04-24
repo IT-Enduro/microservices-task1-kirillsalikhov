@@ -10,8 +10,8 @@ router.get('/manage/health', require('./healtcheck'));
 const apiRouter = new Router({
     prefix: '/api/v1'
 })
-    .get('/cinemas', cinemaController.list)
-    .get('/cinemas/:cinemaUid/films', cinemaController.films)
+    .get('/cinema', cinemaController.list)
+    .get('/cinema/:cinemaUid/films', cinemaController.films)
 
 router.use(apiRouter.routes());
 
