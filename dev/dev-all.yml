@@ -13,6 +13,8 @@ services:
 
   films-service:
     <<: *base_service
+    environment:
+      DATABASE_URL: "postgresql://program:test@postgres:5432/films?schema=public"
     volumes:
       - ./films-service:/app
 
