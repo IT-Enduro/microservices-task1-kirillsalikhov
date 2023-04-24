@@ -1,6 +1,9 @@
 const Koa = require('koa');
 
+const prisma = require('./prisma');
 const router = require('./routes/router');
+
+// TODO add prisma check connection
 
 const port = 8080;
 

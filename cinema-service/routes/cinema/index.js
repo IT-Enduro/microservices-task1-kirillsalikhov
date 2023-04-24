@@ -1,3 +1,5 @@
+const prisma = require('../../prisma');
+
 const cinemas = [
     {name: 'cinema one'},
     {name: 'cinema two'},
@@ -9,7 +11,7 @@ const films = [
 ]
 
 exports.list = async (ctx) => {
-    ctx.body = cinemas;
+    ctx.body = await prisma.cinema.findMany();
 }
 
 exports.films = async (ctx) => {

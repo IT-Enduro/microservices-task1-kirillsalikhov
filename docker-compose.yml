@@ -10,9 +10,8 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./postgres/:/docker-entrypoint-initdb.d/
-# commented as don't need it now
-#    ports:
-#      - "5432:5432"
+    ports:
+      - "6432:5432"
 
   tickets-service:
     build: ./tickets-service

@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Cinema {
+  id           Int           @id @default(autoincrement())
+  cinemaUid    String        @unique @map("cinema_uid") @default(uuid())
+  name         String?       @db.VarChar(255)
+  address      String?       @db.VarChar(255)
+  filmSessions FilmSession[]
+}
+
+model FilmSession {
+  id           Int      @id @default(autoincrement())
+  sessionUid   String   @map("session_uid") @default(uuid())
+  film_uid     String   @unique
+  total_seats  Int
+  booked_seats Int      @default(0)
+  date         DateTime
+  cinema       Cinema   @relation(fields: [cinema_id], references: [id])
+  cinema_id    Int
+}

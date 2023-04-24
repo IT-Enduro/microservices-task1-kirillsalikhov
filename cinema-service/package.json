@@ -9,12 +9,17 @@
   "engines": {
     "node": ">=16.0.0"
   },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "license": "WTFPL",
   "dependencies": {
+    "@prisma/client": "^4.13.0",
     "koa": "^2.14.2",
     "koa-router": "^12.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prisma": "^4.13.0"
   }
 }

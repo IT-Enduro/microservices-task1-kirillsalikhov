@@ -9,3 +9,6 @@ GRANT ALL PRIVILEGES ON DATABASE cinema TO program;
 
 CREATE DATABASE tickets;
 GRANT ALL PRIVILEGES ON DATABASE tickets TO program;
+
+CREATE DATABASE prisma_shadow;
+GRANT ALL PRIVILEGES ON DATABASE prisma_shadow TO program;
