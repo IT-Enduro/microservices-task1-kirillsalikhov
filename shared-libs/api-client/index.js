@@ -1,4 +1,4 @@
-const { FilmsServiceApi } = require("./generated/dist");
+const { FilmsServiceApi, CinemaServiceApi, TicketServiceApi } = require("./generated/dist");
 
 exports.filmsApi = new FilmsServiceApi({ basePath: 'http://films-service:8070' });
 
