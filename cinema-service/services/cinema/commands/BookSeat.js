@@ -29,7 +29,7 @@ class BookSeat extends BaseCommand {
         }
 
         // TODO validation is not best place
-        // may be make query for that for film session 
+        // may be make query for that for film session
         this.cmdCtx.filmSession = fs;
 
         // TODO extract validation for filmSession

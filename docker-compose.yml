@@ -17,6 +17,8 @@ services:
     build: ./tickets-service
     image: tickets-service:latest
     container_name: tickets-service
+    environment:
+      DATABASE_URL: "postgresql://program:test@postgres:5432/tickets?schema=public"
     ports:
       - "8080:8080"
     depends_on:
@@ -26,6 +28,8 @@ services:
     build: ./films-service
     image: films-service:latest
     container_name: films-service
+    environment:
+      DATABASE_URL: "postgresql://program:test@postgres:5432/films?schema=public"
     ports:
       - "8070:8070"
     depends_on:

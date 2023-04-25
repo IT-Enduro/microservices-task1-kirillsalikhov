@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Ticket {
+  id          Int      @id @default(autoincrement())
+  ticketUid   String   @unique @default(uuid()) @map("ticket_uid")
+  film_uid    String
+  session_uid String
+  userName    String   @map("user_name") @db.VarChar(80)
+  row         Int
+  seat        Int
+  date        DateTime
+  status      String   @db.VarChar(20)
+}

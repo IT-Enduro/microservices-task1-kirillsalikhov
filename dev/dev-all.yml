@@ -8,8 +8,11 @@ x-base-service: &base_service
 services:
   tickets-service:
     <<: *base_service
+    environment:
+      DATABASE_URL: "postgresql://program:test@postgres:5432/tickets?schema=public"
     volumes:
       - ./tickets-service:/app
+      - ./shared-libs:/shared-libs
 
   films-service:
     <<: *base_service
