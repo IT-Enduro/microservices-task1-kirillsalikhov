@@ -1,4 +1,20 @@
-const BuyTicket = require("../../services/tickets/comands/BuyTicket");
+const BuyTicket = require("../../services/tickets/commands/BuyTicket");
+const prisma = require("../../prisma");
+
+exports.show = async (ctx) => {
+    ctx.body = await prisma.ticket.findUniqueOrThrow({
+        where: {
+            ticketUid: ctx.params.ticketUid,
+        },
+        select: {
+            ticketUid: true,
+            status: true,
+            date: true,
+            row: true,
+            seat: true
+        },
+    });
+}
 
 exports.buyTicket = async (ctx) => {
     const { cinemaUid, filmUid } = ctx.params;

@@ -10,6 +10,7 @@ router.get('/manage/health', require('./healtcheck'));
 const apiRouter = new Router({
     prefix: '/api/v1'
 })
+    .get('/tickets/:ticketUid', ticketsController.show)
     .post('/tickets/cinema/:cinemaUid/films/:filmUid', ticketsController.buyTicket);
 
 router.use(apiRouter.routes(), apiRouter.allowedMethods());
