@@ -12,6 +12,7 @@ const apiRouter = new Router({
 })
     .get('/cinema', cinemaController.list)
     .get('/cinema/:cinemaUid/films', cinemaController.films)
+    .patch('/cinema/:cinemaUid/films/:filmUid/book-seat', cinemaController.bookSeat)
 
 router.use(apiRouter.routes());
 

@@ -1,14 +1,13 @@
 const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
 
-const prisma = require('./prisma');
 const router = require('./routes/router');
-
-// TODO add prisma check connection
 
 const port = 8060;
 
-const app = new Koa();
-    app.use(router.routes());
+const app = new Koa()
+    .use(bodyParser())
+    .use(router.routes());
 
 const server = app.listen(port, () => {
     console.log(`Ready to receive requests on ${port}`);
