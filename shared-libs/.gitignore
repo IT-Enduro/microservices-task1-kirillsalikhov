@@ -1,3 +1,4 @@
 node_modules
-api-client/generated
+generated
 
+!cinema-tickets-client-1.0.0.tgz

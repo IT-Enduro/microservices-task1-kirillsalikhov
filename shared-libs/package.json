@@ -4,11 +4,15 @@
   "description": "Shared libs used inside services",
   "main": "index.js",
   "scripts": {
-    "build": "npm i --prefix ./api-client/generated",
-    "generate-api-client": "npx openapi-generator-cli generate -i ../openapi.yml -g typescript-axios -c api-client/config.json -o api-client/generated"
+    "update-api-client": "npm run generate-api-client && npm run build-client && npm pack ./generated",
+    "generate-api-client": "npx openapi-generator-cli generate -i ../openapi.yml -g typescript-axios -c config.json -o ./generated",
+    "build-client": "npm i --prefix ./generated"
   },
   "license": "WTFPL",
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0"
+  },
+  "dependencies": {
+    "cinema-tickets-client": "file:./cinema-tickets-client-1.0.0.tgz"
   }
 }

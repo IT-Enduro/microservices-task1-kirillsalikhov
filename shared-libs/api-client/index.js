@@ -1,4 +1,4 @@
-const { FilmsServiceApi, CinemaServiceApi, TicketServiceApi } = require("./generated/dist");
+const { FilmsServiceApi, CinemaServiceApi, TicketServiceApi } = require("cinema-tickets-client");
 const ExtraApiClient = require('./ExtraApiClient');
 
 const ticketsUrl = 'http://cinema-service:8080';
