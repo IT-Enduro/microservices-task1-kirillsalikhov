@@ -1,4 +1,4 @@
-const BuyTicket = require("../../services/tickets/commands/BuyTicket");
+const { BuyTicket, CancelTicket } = require("../../services/tickets/commands");
 const prisma = require("../../prisma");
 
 exports.show = async (ctx) => {
@@ -19,19 +19,32 @@ exports.show = async (ctx) => {
 exports.buyTicket = async (ctx) => {
     const { cinemaUid, filmUid } = ctx.params;
 
-    const cmd = new BuyTicket({
+    const result = await new BuyTicket({
         cinemaUid,
         filmUid,
         userName: ctx.get('X-User-Name'),
         ticketData: ctx.request.body
-    });
+    })
+        .execute();
 
-    const result = await cmd.execute();
     if (result.isFailed) {
         ctx.status = 409;
         ctx.body = result.errors;
     } else {
         ctx.status = 201;
         ctx.set('Location', ctx.router.url('ticketUid', result.ticket.ticketUid));
+    }
+}
+
+exports.cancelTicket = async (ctx) => {
+    const { ticketUid } = ctx.params;
+    const result = await new CancelTicket({ ticketUid })
+        .execute();
+
+    if (result.isFailed) {
+        ctx.status = 409;
+        ctx.body = result.errors;
+    } else {
+        ctx.status = 204;
     }
 }

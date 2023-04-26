@@ -11,7 +11,8 @@ const apiRouter = new Router({
     prefix: '/api/v1'
 })
     .get('ticketUid', '/tickets/:ticketUid', ticketsController.show)
-    .post('/tickets/cinema/:cinemaUid/films/:filmUid', ticketsController.buyTicket);
+    .post('/tickets/cinema/:cinemaUid/films/:filmUid', ticketsController.buyTicket)
+    .delete('/tickets/:ticketUid', ticketsController.cancelTicket);
 
 router.use(apiRouter.routes(), apiRouter.allowedMethods());
 

@@ -3,7 +3,7 @@ const { extraApi } = require('../../../../shared-libs/api-client');
 
 const prisma = require("../../../prisma");
 
-class BuyTicket extends BaseCommand{
+class BuyTicket extends BaseCommand {
 
     async doExecute() {
         await this._bookSeat();
