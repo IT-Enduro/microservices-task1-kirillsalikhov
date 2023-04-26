@@ -1,4 +1,4 @@
-FROM node:16-bullseye-slim
+FROM cinema-services-base
 
 RUN mkdir -p /app
 WORKDIR /app
@@ -8,7 +8,9 @@ RUN npm ci
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 8070
 
-CMD ["node", "app.js"]
+RUN npx prisma generate
+
+CMD ["npm", "run", "prod-start"]
 

@@ -4,7 +4,9 @@
   "description": "Cinema service",
   "main": "app.js",
   "scripts": {
-    "dev-start": "nodemon app.js"
+    "prod-start": "npm run db:migrate && node app.js",
+    "dev-start": "nodemon app.js",
+    "db:migrate": "prisma migrate deploy"
   },
   "engines": {
     "node": ">=16.0.0"
