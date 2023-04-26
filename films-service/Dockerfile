@@ -1,4 +1,4 @@
-FROM cinema-services-base
+FROM cinema-services-base:latest
 
 RUN mkdir -p /app
 WORKDIR /app
