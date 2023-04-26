@@ -4,5 +4,5 @@ RUN mkdir -p /shared-libs
 WORKDIR /shared-libs
 
 COPY . .
-RUN npm ci
+RUN npm ci --omit=dev
 
