@@ -33,6 +33,7 @@ class BookSeat extends BaseCommand {
         this.cmdCtx.filmSession = fs;
 
         // TODO extract validation for filmSession
+        // not filmUid probably?
         if ((fs.booked_seats + 1) > fs.total_seats) {
             this.fail({message: `film session: ${this.cmdCtx.filmUid} no has seats left`});
         }

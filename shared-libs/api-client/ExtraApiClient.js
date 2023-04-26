@@ -21,6 +21,14 @@ class ExtraApiClient {
                 return res.data;
             });
     }
+
+    async cinemaReleaseSeat(sessionUid) {
+        return await this.cinemaClient
+            .patch(`/film-sessions/${sessionUid}/release-seat`)
+            .then( (res) => {
+                return res.data;
+            });
+    }
 }
 
 module.exports = ExtraApiClient;

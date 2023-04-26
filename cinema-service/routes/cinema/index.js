@@ -25,16 +25,13 @@ exports.films = async (ctx) => {
 exports.bookSeat = async (ctx) => {
     const { cinemaUid, filmUid } = ctx.params;
 
-    const bookSeatCmd = new BookSeat({
-        cinemaUid,
-        filmUid
-    });
+    const bookSeatCmd = new BookSeat({ cinemaUid, filmUid });
 
     const result = await bookSeatCmd.execute();
 
     if (result.isFailed) {
         ctx.status = 409;
-        ctx.body = {errors: result.errors};
+        ctx.body = { errors: result.errors };
     } else {
         ctx.body = result.filmSession;
     }
