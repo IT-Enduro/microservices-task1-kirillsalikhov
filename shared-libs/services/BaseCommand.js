@@ -30,7 +30,13 @@ class BaseCommand {
 
     fail(errors) {
         this.cmdCtx.isFailed = true;
-        this.cmdCtx.errors.push(...errors);
+
+        if (Array.isArray(errors)) {
+            this.cmdCtx.errors.push(...errors);
+        } else {
+            this.cmdCtx.errors.push(errors);
+        }
+
         throw new CommandError(
             'command failed, this error should be caught'
         );
