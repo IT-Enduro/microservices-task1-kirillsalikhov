@@ -32,6 +32,6 @@ exports.buyTicket = async (ctx) => {
         ctx.body = result.errors;
     } else {
         ctx.status = 201;
-        ctx.set('Location', `/api/v1/tickets/${result.ticket.ticketUid}`);
+        ctx.set('Location', ctx.router.url('ticketUid', result.ticket.ticketUid));
     }
 }
