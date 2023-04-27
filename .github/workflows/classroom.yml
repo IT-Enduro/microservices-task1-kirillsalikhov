@@ -19,7 +19,7 @@ jobs:
 
       - name: Build base image
         timeout-minutes: 7
-        run: docker build ./shared-libs/ -t cinema-services-base:latest --load
+        run: docker build ./shared-libs/ -t cinema-services-base:latest
 
       - name: Build images
         timeout-minutes: 7
