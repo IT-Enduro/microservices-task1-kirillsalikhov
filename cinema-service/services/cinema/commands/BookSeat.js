@@ -1,6 +1,5 @@
 const BaseCommand = require('../../../../shared-libs/services/BaseCommand');
 const prisma = require("../../../prisma");
-const { getCinema } = require("../queries");
 
 class BookSeat extends BaseCommand {
 
@@ -17,15 +16,18 @@ class BookSeat extends BaseCommand {
     }
 
     async validate() {
-        const cinema = await getCinema(this.cmdCtx.cinemaUid);
+        const { cinemaUid, filmUid }= this.cmdCtx;
 
-        if (cinema === null) {
-            this.fail({message: `cinema: ${this.cmdCtx.cinemaUid} not found`});
-        }
+        const cinema = await prisma.cinema.findUniqueOrThrow({
+            where: { cinemaUid },
+            include: {
+                filmSessions: true,
+            }
+        })
 
-        const fs = cinema.filmSessions.find(fs => fs.film_uid === this.cmdCtx.filmUid);
+        const fs = cinema.filmSessions.find(fs => fs.film_uid === filmUid);
         if (fs === undefined) {
-            this.fail({message: `film session: ${this.cmdCtx.filmUid} not found`});
+            this.fail({message: `film session: ${filmUid} not found`});
         }
 
         // TODO may be make query for that for film session
@@ -34,7 +36,7 @@ class BookSeat extends BaseCommand {
         // TODO extract validation for filmSession
         // not filmUid probably?
         if ((fs.booked_seats + 1) > fs.total_seats) {
-            this.fail({message: `film session: ${this.cmdCtx.filmUid} no has seats left`});
+            this.fail({message: `film session: ${filmUid} no has seats left`});
         }
     }
 }
