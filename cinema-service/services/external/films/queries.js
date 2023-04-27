@@ -9,10 +9,9 @@ exports.getFilms = getFilms
 
 async function getFilmsForCinema(cinema) {
     // TODO add method fetch films by uuids to film service
-    // TODO add try & catch
-    const films = await getFilms();
+    const filmsPaginated = await getFilms();
 
-    const filmIdx = films.reduce((idx, f) => {
+    const filmIdx = filmsPaginated.items.reduce((idx, f) => {
         idx[f.filmUid] = f;
         return idx;
     }, {});
