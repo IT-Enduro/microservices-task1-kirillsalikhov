@@ -4,10 +4,10 @@ async function getFilms() {
     const response = await filmsApi.apiV1FilmsGet();
     return response.data;
 }
-exports.getFilms = getFilms
 
 async function getFilmsForCinema(cinema) {
     // TODO add method fetch films by uuids to film service
+    // or fetch all paginated
     const filmsPaginated = await getFilms();
 
     const filmIdx = filmsPaginated.items.reduce((idx, f) => {
