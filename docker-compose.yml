@@ -23,7 +23,6 @@ services:
       - "8080:8080"
     depends_on:
       - postgres
-      - cinema-services-base
 
   films-service:
     build: ./films-service
@@ -35,7 +34,6 @@ services:
       - "8070:8070"
     depends_on:
       - postgres
-      - cinema-services-base
 
   cinema-service:
     build: ./cinema-service
@@ -47,12 +45,6 @@ services:
       - "8060:8060"
     depends_on:
       - postgres
-      - cinema-services-base
-
-  cinema-services-base:
-    build: ./shared-libs
-    image: cinema-services-base:latest
-    container_name: cinema-services-base
 
 volumes:
   db-data:
