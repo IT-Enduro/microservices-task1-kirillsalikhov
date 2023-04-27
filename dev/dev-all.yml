@@ -20,6 +20,7 @@ services:
       DATABASE_URL: "postgresql://program:test@postgres:5432/films?schema=public"
     volumes:
       - ./films-service:/app
+      - ./shared-libs:/shared-libs
 
   cinema-service:
     <<: *base_service
