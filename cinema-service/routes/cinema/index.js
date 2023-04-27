@@ -1,13 +1,15 @@
-const { getCinemas, getCinema} = require("../../services/cinema/queries");
+const prisma = require("../../prisma");
+const { paginate } = require("../../../shared-libs/services/queryUtils");
+
+const { getCinema } = require("../../services/cinema/queries");
+
 const { BookSeat } = require("../../services/cinema/commands");
 const { getFilmsForCinema} = require("../../services/external/films/queries");
 const { cinemaWithFilmsToJson } = require("../../serializers");
 
 
 exports.list = async (ctx) => {
-    // TODO add Serializer
-    // TODO Add pagination
-    ctx.body = await getCinemas();
+    ctx.body = await paginate(prisma.cinema, {}, ctx.request.query)
 }
 
 exports.films = async (ctx) => {
