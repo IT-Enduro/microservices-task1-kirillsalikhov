@@ -13,8 +13,7 @@ const apiRouter = new Router({
 })
     .get('/cinema', cinemaController.list)
     .get('/cinema/:cinemaUid/films', cinemaController.films)
-    // TODO move to sessionController ?
-    .patch('/cinema/:cinemaUid/films/:filmUid/book-seat', cinemaController.bookSeat)
+    .patch('/cinema/:cinemaUid/films/:filmUid/book-seat', filmSessionController.bookSeat)
     .patch('/film-sessions/:sessionUid/release-seat', filmSessionController.releaseSeat)
 
 

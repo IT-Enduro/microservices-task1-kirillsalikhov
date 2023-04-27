@@ -28,8 +28,7 @@ class BookSeat extends BaseCommand {
             this.fail({message: `film session: ${this.cmdCtx.filmUid} not found`});
         }
 
-        // TODO validation is not best place
-        // may be make query for that for film session
+        // TODO may be make query for that for film session
         this.cmdCtx.filmSession = fs;
 
         // TODO extract validation for filmSession

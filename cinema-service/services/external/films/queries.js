@@ -1,4 +1,3 @@
-// TODO make shorter path for shared-libs
 const { filmsApi } = require('../../../../shared-libs/api-client');
 
 async function getFilms() {
