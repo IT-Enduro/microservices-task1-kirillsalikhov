@@ -42,6 +42,9 @@ jobs:
           delayRequest: 100
           reporters: '[ "cli" ]'
 
+      - name: Check logs
+        run: docker compose logs
+
       - uses: education/autograding@v1
         id: autograder
         continue-on-error: true
