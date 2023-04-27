@@ -13,12 +13,13 @@ exports.list = async (ctx) => {
 }
 
 exports.films = async (ctx) => {
-    const cinema = await getCinema(ctx.params.cinemaUid);
-    // TODO throw err and move to midleware ?
-    if (cinema === null) {
-        ctx.status = 404;
-        return;
-    }
+    const cinemaUid = ctx.params.cinemaUid;
+    const cinema = await prisma.cinema.findUniqueOrThrow({
+        where: { cinemaUid },
+        include: {
+            filmSessions: true,
+        }
+    });
 
     const films = await getFilmsForCinema(cinema);
     ctx.body = cinemaWithFilmsToJson(cinema, films);

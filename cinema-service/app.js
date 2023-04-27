@@ -1,11 +1,13 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
+const { errors } = require('../shared-libs/middlewares/errors');
 
 const router = require('./routes/router');
 
 const port = 8060;
 
 const app = new Koa()
+    .use(errors)
     .use(bodyParser())
     .use(router.routes());
 
