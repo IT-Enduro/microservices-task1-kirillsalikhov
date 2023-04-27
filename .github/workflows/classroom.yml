@@ -44,6 +44,8 @@ jobs:
 
       - name: Check logs
         run: docker compose logs
+        if: always()
+        continue-on-error: true
 
       - uses: education/autograding@v1
         id: autograder
